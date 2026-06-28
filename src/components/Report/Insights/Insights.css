@@ -1,0 +1,578 @@
+.insights{
+
+    padding:140px 0;
+
+}
+
+/* ---------------- Header ---------------- */
+
+.insights-header{
+
+    max-width:760px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.section-kicker{
+
+    color:var(--gold);
+
+    letter-spacing:4px;
+
+    font-size:.85rem;
+
+    margin-bottom:18px;
+
+    text-transform:uppercase;
+
+}
+
+.insights-header h2{
+
+    font-size:clamp(2.5rem,5vw,4rem);
+
+    font-weight:300;
+
+    margin-bottom:20px;
+
+}
+
+.section-description{
+
+    max-width:640px;
+
+    margin:0 auto;
+
+    color:rgba(255,255,255,.65);
+
+    line-height:1.9;
+
+}
+
+/* ---------------- Grid ---------------- */
+
+.insights-grid{
+
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+    gap:28px;
+
+}
+
+/* ---------------- Card ---------------- */
+
+.insight-card{
+
+    padding:34px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.03);
+
+    border:1px solid rgba(212,175,55,.15);
+
+    display:flex;
+
+    flex-direction:column;
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+
+    opacity:0;
+
+    transform:translateY(40px);
+
+    animation:fadeUp .7s forwards;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.insight-card:nth-child(1){
+
+    animation-delay:.05s;
+
+}
+
+.insight-card:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+.insight-card:nth-child(3){
+
+    animation-delay:.25s;
+
+}
+
+.insight-card:nth-child(4){
+
+    animation-delay:.35s;
+
+}
+
+.insight-card:hover{
+
+    transform:translateY(-8px);
+
+    border-color:rgba(212,175,55,.35);
+
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.35),
+        0 0 40px rgba(212,175,55,.08);
+
+}
+
+/* ---------------- Top ---------------- */
+
+.insight-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:26px;
+
+}
+
+.insight-icon{
+
+    font-size:2.2rem;
+
+}
+
+.insight-score-box{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:6px;
+
+}
+
+.insight-score{
+
+    color:var(--gold);
+
+    font-size:1.9rem;
+
+    font-weight:300;
+
+}
+
+.confidence{
+
+    font-size:.72rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    color:rgba(212,175,55,.7);
+
+}
+
+/* ---------------- Text ---------------- */
+
+.insight-card h3{
+
+    font-size:1.45rem;
+
+    font-weight:400;
+
+    margin-bottom:18px;
+
+}
+
+.insight-card>p{
+
+    color:rgba(255,255,255,.72);
+
+    line-height:1.9;
+
+}
+
+/* ---------------- Highlight ---------------- */
+
+.insight-highlight{
+
+    margin-top:24px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(212,175,55,.06);
+
+    border:1px solid rgba(212,175,55,.12);
+
+}
+
+.insight-highlight span{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--gold);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-size:.72rem;
+
+}
+
+.insight-highlight p{
+
+    margin:0;
+
+    line-height:1.75;
+
+}
+
+/* ---------------- Frequency ---------------- */
+
+.insight-tag{
+
+    margin-top:22px;
+
+    display:inline-flex;
+
+    align-self:flex-start;
+
+    padding:8px 16px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(212,175,55,.15);
+
+    color:var(--gold);
+
+    font-size:.82rem;
+
+}
+
+/* ---------------- Divider ---------------- */
+
+.insight-card::after{
+
+    content:"";
+
+    display:block;
+
+    margin-top:28px;
+
+    height:1px;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(212,175,55,.25),
+
+        transparent
+
+    );
+
+}
+
+/* ---------------- Animation ---------------- */
+
+@keyframes fadeUp{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+/* ====================================================
+Laptop
+==================================================== */
+
+@media (max-width:1200px){
+
+.insights{
+
+    padding:120px 0;
+
+}
+
+.insights-grid{
+
+    gap:22px;
+
+}
+
+}
+
+/* ====================================================
+Tablet
+==================================================== */
+
+@media (max-width:992px){
+
+.insights{
+
+    padding:100px 0;
+
+}
+
+.insights-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+.insight-card{
+
+    padding:30px;
+
+}
+
+}
+
+/* ====================================================
+Mobile
+==================================================== */
+
+@media (max-width:768px){
+
+.insights{
+
+    padding:80px 0;
+
+}
+
+.insights-header{
+
+    padding:0 10px;
+
+}
+
+.insights-header h2{
+
+    font-size:2rem;
+
+}
+
+.section-description{
+
+    font-size:.95rem;
+
+    line-height:1.8;
+
+}
+
+.insights-grid{
+
+    margin-top:50px;
+
+    gap:18px;
+
+}
+
+.insight-card{
+
+    padding:24px;
+
+    border-radius:22px;
+
+}
+
+.insight-top{
+
+    margin-bottom:20px;
+
+}
+
+.insight-icon{
+
+    font-size:1.8rem;
+
+}
+
+.insight-score{
+
+    font-size:1.5rem;
+
+}
+
+.insight-card h3{
+
+    font-size:1.25rem;
+
+}
+
+.insight-highlight{
+
+    padding:16px;
+
+}
+
+}
+
+/* ====================================================
+Small Phones
+==================================================== */
+
+@media (max-width:480px){
+
+.section-kicker{
+
+    font-size:.72rem;
+
+    letter-spacing:3px;
+
+}
+
+.insights-header h2{
+
+    font-size:1.7rem;
+
+}
+
+.section-description{
+
+    font-size:.9rem;
+
+}
+
+.insight-card{
+
+    padding:20px;
+
+    border-radius:18px;
+
+}
+
+.insight-top{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:16px;
+
+}
+
+.insight-score-box{
+
+    align-items:flex-start;
+
+}
+
+.insight-score{
+
+    font-size:1.35rem;
+
+}
+
+.insight-card h3{
+
+    font-size:1.1rem;
+
+}
+
+.insight-card>p{
+
+    font-size:.92rem;
+
+    line-height:1.75;
+
+}
+
+.insight-highlight{
+
+    margin-top:20px;
+
+    padding:14px;
+
+}
+
+.insight-highlight p{
+
+    font-size:.9rem;
+
+}
+
+.insight-tag{
+
+    font-size:.75rem;
+
+    padding:7px 14px;
+
+}
+
+}
+
+/* ====================================================
+Very Small Phones
+==================================================== */
+
+@media (max-width:360px){
+
+.insights{
+
+    padding:65px 0;
+
+}
+
+.insight-card{
+
+    padding:18px;
+
+}
+
+.insight-icon{
+
+    font-size:1.6rem;
+
+}
+
+.insight-score{
+
+    font-size:1.2rem;
+
+}
+
+.insight-card h3{
+
+    font-size:1rem;
+
+}
+
+.insight-card>p{
+
+    font-size:.88rem;
+
+}
+
+}

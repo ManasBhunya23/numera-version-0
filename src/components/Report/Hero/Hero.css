@@ -1,0 +1,297 @@
+.report-hero{
+
+    width:100%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:120px 0 80px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.hero-score-wrapper{
+
+    position:relative;
+
+    margin-bottom:40px;
+
+}
+
+.hero-score-ring{
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    position:relative;
+
+    background:
+    radial-gradient(circle,
+    rgba(212,175,55,.10),
+    transparent 70%);
+
+    border:2px solid rgba(212,175,55,.35);
+
+    box-shadow:
+    0 0 60px rgba(212,175,55,.12);
+
+}
+
+.hero-score-ring::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(212,175,55,.12);
+
+}
+
+.hero-score{
+
+    font-size:5.8rem;
+
+    font-weight:200;
+
+    color:var(--gold);
+
+    line-height:1;
+
+}
+
+.hero-kicker{
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:rgba(255,255,255,.45);
+
+    font-size:.8rem;
+
+}
+
+.hero-title{
+
+    margin-top:18px;
+
+    font-size:clamp(3rem,6vw,5rem);
+
+    font-weight:300;
+
+    line-height:1.05;
+
+}
+
+.hero-description{
+
+    margin-top:28px;
+
+    max-width:760px;
+
+    color:rgba(255,255,255,.72);
+
+    line-height:1.9;
+
+    font-size:1.05rem;
+
+}
+
+.hero-keywords{
+
+    margin-top:45px;
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:14px;
+
+}
+
+.keyword-pill{
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(212,175,55,.08);
+
+    border:1px solid rgba(212,175,55,.18);
+
+    color:white;
+
+    transition:.35s;
+
+    cursor:default;
+
+}
+
+.keyword-pill:hover{
+
+    transform:translateY(-3px);
+
+    border-color:rgba(212,175,55,.5);
+
+    box-shadow:
+
+    0 0 25px rgba(212,175,55,.15);
+
+}
+
+/* ====================================
+Tablet
+==================================== */
+
+@media(max-width:1024px){
+
+.hero-score-ring{
+
+    width:180px;
+
+    height:180px;
+
+}
+
+.hero-score{
+
+    font-size:4.8rem;
+
+}
+
+.hero-description{
+
+    max-width:650px;
+
+}
+
+}
+
+/* ====================================
+Mobile
+==================================== */
+
+@media(max-width:768px){
+
+.report-hero{
+
+    padding:100px 20px 60px;
+
+}
+
+.hero-score-ring{
+
+    width:150px;
+
+    height:150px;
+
+}
+
+.hero-score{
+
+    font-size:4rem;
+
+}
+
+.hero-title{
+
+    font-size:2.6rem;
+
+}
+
+.hero-description{
+
+    font-size:.95rem;
+
+    line-height:1.8;
+
+}
+
+.hero-keywords{
+
+    gap:10px;
+
+}
+
+.keyword-pill{
+
+    padding:10px 16px;
+
+    font-size:.85rem;
+
+}
+
+}
+
+/* ====================================
+Small Phones
+==================================== */
+
+@media(max-width:480px){
+
+.hero-score-ring{
+
+    width:130px;
+
+    height:130px;
+
+}
+
+.hero-score{
+
+    font-size:3.2rem;
+
+}
+
+.hero-kicker{
+
+    font-size:.7rem;
+
+    letter-spacing:3px;
+
+}
+
+.hero-title{
+
+    font-size:2rem;
+
+}
+
+.hero-description{
+
+    font-size:.9rem;
+
+}
+
+.keyword-pill{
+
+    padding:8px 14px;
+
+    font-size:.8rem;
+
+}
+
+}
