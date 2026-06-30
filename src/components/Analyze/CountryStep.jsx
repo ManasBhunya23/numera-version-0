@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import countries from "./countries";
+import countries from "./Countries";
 
 export default function CountryStep({ onSelect }) {
 
