@@ -1,5 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
-import { runEngine, ROOT_PLANETS } from "./numerologyEngine";
+import { runEngine, ROOT_PLANETS } from "./Numerologyengine";
 
 export default function AnalysisLoader({
 

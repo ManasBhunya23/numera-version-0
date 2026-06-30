@@ -224,7 +224,7 @@
 
     letter-spacing:-4px;
 
-    user-select:none;
+    /* user-select:none; */
 
     pointer-events:none;
 
