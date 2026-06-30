@@ -3,16 +3,19 @@ export default function NumberStep({
   country,
   number,
   setNumber,
-  onSubmit
+  onSubmit,
+  onChangeCountry
 
 }) {
+
+  const digitLen = country?.digits || 10;
 
   const handleChange = (e) => {
 
     const cleanNumber =
       e.target.value
         .replace(/\D/g, "")
-        .slice(0, 10);
+        .slice(0, digitLen);
 
     setNumber(cleanNumber);
 
@@ -30,18 +33,26 @@ export default function NumberStep({
         Enter Mobile Number
       </h1>
 
-      <div className="selected-country">
+      <button
+        className="selected-country"
+        onClick={onChangeCountry}
+        type="button"
+      >
 
-        <span>🇮🇳</span>
+        <span>{country?.flag}</span>
 
-        <span>{country}</span>
+        <span>{country?.name}</span>
 
-      </div>
+        <span className="selected-country-change">
+          Change
+        </span>
+
+      </button>
 
       <div className="number-input-wrapper">
 
         <div className="country-prefix">
-          +91
+          {country?.code}
         </div>
 
         <input
@@ -52,13 +63,15 @@ export default function NumberStep({
 
           inputMode="numeric"
 
-          maxLength={10}
+          maxLength={digitLen}
 
           value={number}
 
-          placeholder="9876543210"
+          placeholder={"X".repeat(digitLen)}
 
           onChange={handleChange}
+
+          autoFocus
 
         />
 
@@ -66,7 +79,7 @@ export default function NumberStep({
 
       <div className="digit-counter">
 
-        {number.length}/10
+        {number.length}/{digitLen}
 
       </div>
 
@@ -74,7 +87,7 @@ export default function NumberStep({
 
         className="analyze-button"
 
-        disabled={number.length !== 10}
+        disabled={number.length !== digitLen}
 
         onClick={onSubmit}
 

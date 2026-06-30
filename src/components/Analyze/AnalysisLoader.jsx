@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { runEngine, ROOT_PLANETS } from "./numerologyEngine";
 
 export default function AnalysisLoader({
 
-  onComplete
+  fullNumber,   // digits only, e.g. "9876543210"
+  onComplete    // called with the full engine report when done
 
 }) {
 
@@ -21,6 +23,14 @@ export default function AnalysisLoader({
   ];
 
   const [index, setIndex] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+
+  // Engine runs synchronously and instantly — the staged
+  // messages below are a deliberate pace, not a real wait.
+  const report = useMemo(() => {
+    if (!fullNumber) return null;
+    return runEngine(fullNumber);
+  }, [fullNumber]);
 
   useEffect(() => {
 
@@ -36,13 +46,15 @@ export default function AnalysisLoader({
 
         clearInterval(interval);
 
+        setRevealed(true);
+
         if (onComplete) {
 
           setTimeout(() => {
 
-            onComplete();
+            onComplete(report);
 
-          }, 1200);
+          }, 1400);
 
         }
 
@@ -54,7 +66,9 @@ export default function AnalysisLoader({
 
     return () => clearInterval(interval);
 
-  }, [onComplete]);
+  }, [onComplete, report]);
+
+  const digits = (fullNumber || "00000").split("").slice(0, 5);
 
   return (
 
@@ -66,19 +80,38 @@ export default function AnalysisLoader({
 
         <div className="loader-digits">
 
-            <span>8</span>
+          {digits.map((d, i) => (
+            <span key={i}>{d}</span>
+          ))}
 
-            <span>4</span>
-
-            <span>7</span>
-
-            <span>8</span>
-
-            <span>2</span>
-
-            </div>
+        </div>
 
       </h2>
+
+      {/* Root number reveal — fades/scales in once analysis settles */}
+      <div className={`loader-root${revealed ? " loader-root--visible" : ""}`}>
+
+        <span className="loader-root-label">
+          Root Number
+        </span>
+
+        <div className="loader-root-value">
+
+          <span className="loader-root-number">
+            {report?.root ?? "—"}
+          </span>
+
+          <span className="loader-root-planet">
+            {report ? `Ruled by ${report.rootPlanet}` : ""}
+          </span>
+
+        </div>
+
+      </div>
+
+      <p className="loader-message">
+        {messages[index]}
+      </p>
 
       <div className="loader-progress">
 

@@ -1,166 +1,267 @@
+import { useRef, useState } from "react";
+
 import "./Pricing.css";
 
 export default function Pricing() {
 
-const plans = [
+  const sliderRef = useRef(null);
 
+  const [selected, setSelected] = useState(1);
 
-{
-  name: "FREE PREVIEW",
-  tag: "For Curious Users",
-  launch: "FREE",
-  old: "₹99",
-  features: [
-    "Mobile Number Score",
-    "Number Archetype",
-    "Top Strength",
-    "Top Challenge",
-    "AI Verdict"
-  ]
-},
+  const plans = [
 
-{
-  name: "VERDICT PRO™",
-  tag: "Most Popular",
-  launch: "₹159",
-  old: "₹249",
-  featured: true,
-  features: [
-    "Everything in Free",
-    "Complete Intelligence Score",
-    "Wealth Potential",
-    "Career Alignment",
-    "Relationship Compatibility",
-    "Hidden Number Patterns",
-    "Detailed Recommendations"
-  ]
-},
+    {
+      id: 0,
+      name: "FREE PREVIEW",
+      tag: "For Curious Users",
+      launch: "FREE",
+      old: "₹99",
+      savings: null,
+      features: [
+        "Mobile Number Score",
+        "Number Archetype",
+        "Top Strength",
+        "Top Challenge",
+        "AI Verdict"
+      ]
+    },
 
-{
-  name: "DUEL™",
-  tag: "For Decision Makers",
-  launch: "₹399",
-  old: "₹499",
-  features: [
-    "Compare Two Numbers",
-    "Side-by-side Analysis",
-    "Winner Recommendation",
-    "Score Breakdown",
-    "Opportunity Analysis"
-  ]
-},
+    {
+      id: 1,
+      name: "VERDICT PRO™",
+      tag: "Most Popular",
+      launch: "₹159",
+      old: "₹249",
+      savings: "Save 36%",
+      featured: true,
+      features: [
+        "Everything in Free",
+        "Complete Intelligence Score",
+        "Wealth Potential",
+        "Career Alignment",
+        "Relationship Compatibility",
+        "Hidden Number Patterns",
+        "Detailed Recommendations"
+      ]
+    },
 
-{
-  name: "SELECTION™",
-  tag: "For Professionals",
-  launch: "₹799",
-  old: "₹999",
-  features: [
-    "Analyze Multiple Numbers",
-    "Rank Every Option",
-    "Best Overall Pick",
-    "Strength Matrix",
-    "Risk Matrix"
-  ]
-},
+    {
+      id: 2,
+      name: "DUEL™",
+      tag: "For Decision Makers",
+      launch: "₹399",
+      old: "₹499",
+      savings: "Save 20%",
+      features: [
+        "Compare Two Numbers",
+        "Side-by-side Analysis",
+        "Winner Recommendation",
+        "Score Breakdown",
+        "Opportunity Analysis"
+      ]
+    },
 
-{
-  name: "DISCOVERY™",
-  tag: "Premium Research",
-  launch: "₹1599",
-  old: "₹1999",
-  features: [
-    "Find New Numbers",
-    "Availability Research",
-    "AI Ranking Engine",
-    "Personalized Recommendations",
-    "Strongest Match Discovery"
-  ]
-}
+    {
+      id: 3,
+      name: "SELECTION™",
+      tag: "For Professionals",
+      launch: "₹799",
+      old: "₹999",
+      savings: "Save 20%",
+      features: [
+        "Analyze Multiple Numbers",
+        "Rank Every Option",
+        "Best Overall Pick",
+        "Strength Matrix",
+        "Risk Matrix"
+      ]
+    },
 
+    {
+      id: 4,
+      name: "DISCOVERY™",
+      tag: "Premium Research",
+      launch: "₹1599",
+      old: "₹1999",
+      savings: "Save 20%",
+      features: [
+        "Find New Numbers",
+        "Availability Research",
+        "AI Ranking Engine",
+        "Personalized Recommendations",
+        "Strongest Match Discovery"
+      ]
+    }
 
-];
+  ];
 
-return (
+  const handleSelect = (index) => {
 
+    setSelected(index);
 
-<section
-  className="pricing"
-  id="pricing"
->
+    const slider = sliderRef.current;
+    const card = slider.children[index];
 
-  <p className="section-kicker">
-    NUMBER INTELLIGENCE PLANS
-  </p>
+    card.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
 
-  <h2 className="section-title">
-    Choose Your Analysis Level
-  </h2>
+  };
 
-  <div className="pricing-slider">
+  return (
 
-    <div className="pricing-track">
+    <section
+      className="pricing"
+      id="pricing"
+    >
 
-      {[...plans, ...plans].map((plan, index) => (
+      <div className="pricing-header">
 
-        <div
-          key={index}
-          className={`pricing-card ${
-            plan.featured ? "featured" : ""
-          }`}
-        >
+        <p className="section-kicker">
+          NUMBER INTELLIGENCE PLANS
+        </p>
 
-          <span className="plan-tag">
-            {plan.tag}
-          </span>
+        <h2 className="section-title">
+          Choose Your Analysis Level
+        </h2>
 
-          <h3>
-            {plan.name}
-          </h3>
+        <p className="section-description">
+          Unlock progressively deeper AI intelligence,
+          from an instant preview to complete numerical
+          analysis and premium number discovery.
+        </p>
 
-          <div className="price-block">
+      </div>
 
-            <span className="old-price">
-              {plan.old}
+      <div
+        className="pricing-slider"
+        ref={sliderRef}
+      >
+
+        {plans.map((plan, index) => (
+
+          <div
+            key={plan.id}
+            className={`
+              pricing-card
+              ${plan.featured ? "featured" : ""}
+              ${selected === index ? "active" : ""}
+            `}
+            onClick={() => handleSelect(index)}
+          >
+
+            {/* Watermark plan number — echoes HowItWorks numeral signature */}
+            <span className="plan-numeral">
+              {String(index + 1).padStart(2, "0")}
             </span>
 
-            <span className="launch-price">
-              Launch Price
-            </span>
+            <div className="pricing-card-top">
 
-            <div className="current-price">
-              {plan.launch}
+              <span className="plan-tag">
+                {plan.tag}
+              </span>
+
+              {plan.featured && (
+                <span className="featured-badge">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l2.6 6.6L21 11l-6.4 2.4L12 20l-2.6-6.6L3 11l6.4-2.4z" />
+                  </svg>
+                  Best Value
+                </span>
+              )}
+
             </div>
+
+            <h3>
+              {plan.name}
+            </h3>
+
+            <div className="price-block">
+
+              <span className="old-price">
+                {plan.old}
+              </span>
+
+              {plan.savings && (
+                <span className="savings-pill">
+                  {plan.savings}
+                </span>
+              )}
+
+              <div className="current-price">
+                {plan.launch}
+              </div>
+
+              <span className="launch-price">
+                Launch Price
+              </span>
+
+            </div>
+
+            <ul>
+
+              {plan.features.map(feature => (
+
+                <li key={feature}>
+
+                  <span className="li-dot">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </span>
+
+                  {feature}
+
+                </li>
+
+              ))}
+
+            </ul>
+
+            <button className="pricing-btn">
+
+              Unlock Intelligence
+
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+
+            </button>
 
           </div>
 
-          <ul>
+        ))}
 
-            {plan.features.map((feature) => (
+      </div>
 
-              <li key={feature}>
-                ✓ {feature}
-              </li>
+      <div className="pricing-footer">
 
-            ))}
+        <div className="pricing-indicators">
 
-          </ul>
+          {plans.map((_, index) => (
 
-          <button className="pricing-btn">
-            Unlock
-          </button>
+            <button
+              key={index}
+              className={selected === index ? "indicator active" : "indicator"}
+              onClick={() => handleSelect(index)}
+              aria-label={`View plan ${index + 1}`}
+            />
+
+          ))}
 
         </div>
 
-      ))}
+        <span className="pricing-hint">
+          Drag or click to compare plans
+        </span>
 
-    </div>
+      </div>
 
-  </div>
+    </section>
 
-</section>
-
-
-);
+  );
 
 }

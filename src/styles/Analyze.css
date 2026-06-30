@@ -29,6 +29,12 @@ z-index:10;
 
 }
 
+.analyze-card--wide{
+
+max-width:880px;
+
+}
+
 .analyze-kicker{
 
 color:var(--gold);
@@ -62,26 +68,170 @@ text-align:center;
 }
 
 /* ==========================================
-COUNTRY
+COUNTRY SEARCH
+========================================== */
+
+.country-search-wrap{
+
+position:relative;
+
+max-width:420px;
+
+margin:36px auto 0;
+
+display:flex;
+
+align-items:center;
+
+}
+
+.country-search-icon{
+
+position:absolute;
+
+left:18px;
+
+width:18px;
+
+height:18px;
+
+color:rgba(255,255,255,.35);
+
+pointer-events:none;
+
+}
+
+.country-search-input{
+
+width:100%;
+
+padding:15px 44px;
+
+border-radius:999px;
+
+border:1px solid rgba(212,175,55,.15);
+
+background:rgba(255,255,255,.03);
+
+color:white;
+
+font-size:.95rem;
+
+outline:none;
+
+transition:.3s ease;
+
+}
+
+.country-search-input::placeholder{
+
+color:rgba(255,255,255,.32);
+
+}
+
+.country-search-input:hover{
+
+border-color:rgba(212,175,55,.3);
+
+}
+
+.country-search-input:focus{
+
+border-color:rgba(212,175,55,.5);
+
+background:rgba(255,255,255,.05);
+
+}
+
+.country-search-clear{
+
+position:absolute;
+
+right:14px;
+
+width:24px;
+
+height:24px;
+
+border-radius:50%;
+
+border:none;
+
+background:rgba(255,255,255,.08);
+
+color:rgba(255,255,255,.6);
+
+font-size:1.1rem;
+
+line-height:1;
+
+cursor:pointer;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+transition:.25s ease;
+
+}
+
+.country-search-clear:hover{
+
+background:rgba(212,175,55,.2);
+
+color:var(--gold-light);
+
+}
+
+/* ==========================================
+COUNTRY GRID
 ========================================== */
 
 .country-grid{
 
-margin-top:60px;
+margin-top:36px;
 
-display:flex;
+max-height:480px;
 
-justify-content:center;
+overflow-y:auto;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+
+gap:14px;
+
+padding:4px 4px 8px;
+
+scrollbar-width:thin;
+
+scrollbar-color:rgba(212,175,55,.25) transparent;
+
+}
+
+.country-grid::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.country-grid::-webkit-scrollbar-thumb{
+
+background:rgba(212,175,55,.25);
+
+border-radius:999px;
 
 }
 
 .country-card{
 
-width:280px;
+width:100%;
 
-height:120px;
+height:118px;
 
-border-radius:24px;
+border-radius:20px;
 
 border:1px solid rgba(212,175,55,.15);
 
@@ -99,9 +249,9 @@ justify-content:center;
 
 align-items:center;
 
-gap:6px;
+gap:5px;
 
-transition:.35s ease;
+transition:.3s ease;
 
 }
 
@@ -111,20 +261,30 @@ transform:translateY(-4px);
 
 border-color:rgba(212,175,55,.4);
 
+background:rgba(212,175,55,.05);
+
 box-shadow:
-0 0 30px rgba(212,175,55,.15);
+0 0 24px rgba(212,175,55,.14);
 
 }
 
 .country-flag{
 
-font-size:2rem;
+font-size:1.7rem;
+
+line-height:1;
 
 }
 
 .country-name{
 
-font-size:1rem;
+font-size:.86rem;
+
+text-align:center;
+
+padding:0 8px;
+
+line-height:1.2;
 
 }
 
@@ -132,7 +292,73 @@ font-size:1rem;
 
 color:var(--gold);
 
-font-size:.9rem;
+font-size:.8rem;
+
+}
+
+.country-empty{
+
+margin-top:48px;
+
+color:rgba(255,255,255,.4);
+
+font-size:.95rem;
+
+}
+
+/* ==========================================
+SELECTED COUNTRY (NumberStep)
+========================================== */
+
+.selected-country{
+
+margin-top:30px;
+
+display:inline-flex;
+
+align-items:center;
+
+gap:10px;
+
+padding:10px 18px;
+
+border-radius:999px;
+
+border:1px solid rgba(212,175,55,.18);
+
+background:rgba(212,175,55,.05);
+
+color:var(--gold);
+
+cursor:pointer;
+
+font-size:.92rem;
+
+transition:.3s ease;
+
+}
+
+.selected-country:hover{
+
+border-color:rgba(212,175,55,.4);
+
+background:rgba(212,175,55,.08);
+
+}
+
+.selected-country-change{
+
+color:rgba(255,255,255,.4);
+
+font-size:.78rem;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+padding-left:8px;
+
+border-left:1px solid rgba(212,175,55,.2);
 
 }
 
@@ -140,17 +366,9 @@ font-size:.9rem;
 NUMBER INPUT
 ========================================== */
 
-.selected-country{
-
-margin-top:30px;
-
-color:var(--gold);
-
-}
-
 .number-input-wrapper{
 
-margin-top:0;
+margin-top:30px;
 
 display:flex;
 
@@ -165,8 +383,6 @@ gap:12px;
 .country-prefix{
 
 min-width:80px;
-
-margin-top:35px;
 
 padding:23px;
 
@@ -359,7 +575,7 @@ color:white;
 
 .loader-digits{
 
-margin-top:40px;
+margin-top:0;
 
 display:flex;
 
@@ -401,13 +617,123 @@ animation-delay:.8s;
 
 }
 
+/* ==========================================
+LOADER — ROOT NUMBER REVEAL
+========================================== */
+
+.loader-root{
+
+margin-top:38px;
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:8px;
+
+opacity:0;
+
+transform:translateY(10px) scale(.94);
+
+filter:blur(4px);
+
+transition:
+opacity .7s ease,
+transform .7s ease,
+filter .7s ease;
+
+}
+
+.loader-root--visible{
+
+opacity:1;
+
+transform:translateY(0) scale(1);
+
+filter:blur(0);
+
+}
+
+.loader-root-label{
+
+font-size:.68rem;
+
+letter-spacing:4px;
+
+text-transform:uppercase;
+
+color:rgba(255,255,255,.4);
+
+}
+
+.loader-root-value{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:2px;
+
+padding:18px 30px;
+
+border-radius:20px;
+
+background:rgba(212,175,55,.06);
+
+border:1px solid rgba(212,175,55,.2);
+
+box-shadow:
+0 0 30px rgba(212,175,55,.12);
+
+}
+
+.loader-root-number{
+
+font-size:2.6rem;
+
+font-weight:300;
+
+color:var(--gold);
+
+line-height:1;
+
+}
+
+.loader-root-planet{
+
+margin-top:6px;
+
+font-size:.82rem;
+
+letter-spacing:1px;
+
+color:var(--gold-light);
+
+}
+
+.loader-message{
+
+margin-top:30px;
+
+font-size:.95rem;
+
+color:rgba(255,255,255,.55);
+
+letter-spacing:.5px;
+
+}
+
 .loader-progress{
 
 width:320px;
 
 height:6px;
 
-margin-top:30px;
+margin-top:20px;
 
 border-radius:999px;
 
@@ -511,6 +837,14 @@ max-width:600px;
 
 }
 
+.analyze-card--wide{
+
+
+max-width:680px;
+
+
+}
+
 .country-card{
 
 
@@ -545,12 +879,66 @@ line-height:1.1;
 
 }
 
+.country-search-wrap{
+
+
+max-width:100%;
+
+
+}
+
+.country-grid{
+
+
+grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+
+max-height:50vh;
+
+gap:10px;
+
+
+}
+
 .country-card{
 
 
-width:100%;
+height:100px;
 
-height:110px;
+
+}
+
+.country-flag{
+
+
+font-size:1.4rem;
+
+
+}
+
+.country-name{
+
+
+font-size:.76rem;
+
+
+}
+
+.country-code{
+
+
+font-size:.72rem;
+
+
+}
+
+.selected-country{
+
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+text-align:center;
 
 
 }
@@ -568,7 +956,7 @@ flex-direction:column;
 
 width:100%;
 
-margin-top:24px;
+margin-top:0;
 
 
 }
@@ -587,6 +975,22 @@ font-size:1.2rem;
 
 
 width:100%;
+
+
+}
+
+.loader-root-value{
+
+
+padding:14px 22px;
+
+
+}
+
+.loader-root-number{
+
+
+font-size:2.1rem;
 
 
 }
@@ -633,10 +1037,18 @@ font-size:2rem;
 
 }
 
+.country-grid{
+
+
+grid-template-columns:repeat(auto-fill,minmax(120px,1fr));
+
+
+}
+
 .country-card{
 
 
-height:95px;
+height:90px;
 
 
 }
@@ -644,7 +1056,7 @@ height:95px;
 .country-flag{
 
 
-font-size:1.7rem;
+font-size:1.5rem;
 
 
 }
@@ -663,6 +1075,14 @@ font-size:1rem;
 width:70px;
 
 height:70px;
+
+
+}
+
+.loader-root-number{
+
+
+font-size:1.8rem;
 
 
 }

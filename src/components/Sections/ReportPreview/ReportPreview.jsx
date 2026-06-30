@@ -40,15 +40,16 @@ export default function ReportPreview() {
         {/* SCORE */}
 
         <div className="report-card report-score">
-
-          <span>
-            87
-          </span>
-
-          <small>
-            OVERALL SCORE
-          </small>
-
+          <div className="score-ring">
+            <svg viewBox="0 0 120 120" className="score-svg">
+              <circle className="score-track" cx="60" cy="60" r="52" />
+              <circle className="score-fill" cx="60" cy="60" r="52" />
+            </svg>
+            <div className="score-inner">
+              <span>87</span>
+              <small>OVERALL SCORE</small>
+            </div>
+          </div>
         </div>
 
         {/* MISSING NUMBERS */}
@@ -92,6 +93,7 @@ export default function ReportPreview() {
         {/* AI INSIGHT */}
 
         <div className="report-card report-wide">
+          <div className="pulse-dot" />
 
           <span className="report-label">
             AI INSIGHT
@@ -111,33 +113,27 @@ export default function ReportPreview() {
         {/* METRICS */}
 
         <div className="report-card metric">
-
           <span>72%</span>
-
-          <small>
-            Wealth
-          </small>
-
+          <small>Wealth</small>
+          <div className="metric-bar-wrap">
+            <div className="metric-bar" style={{ "--pct": "72%" }} />
+          </div>
         </div>
 
         <div className="report-card metric">
-
           <span>81%</span>
-
-          <small>
-            Career
-          </small>
-
+          <small>Career</small>
+          <div className="metric-bar-wrap">
+            <div className="metric-bar" style={{ "--pct": "81%" }} />
+          </div>
         </div>
 
         <div className="report-card metric">
-
           <span>76%</span>
-
-          <small>
-            Relationships
-          </small>
-
+          <small>Relationships</small>
+          <div className="metric-bar-wrap">
+            <div className="metric-bar" style={{ "--pct": "76%" }} />
+          </div>
         </div>
 
       </div>

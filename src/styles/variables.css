@@ -1,0 +1,99 @@
+:root{
+
+/* ===========================
+   COLORS
+=========================== */
+
+--bg-0:#030303;
+--bg-1:#070707;
+--bg-2:#0D0D0D;
+--bg-3:#141414;
+
+--surface:rgba(255,255,255,.03);
+--surface-hover:rgba(255,255,255,.05);
+
+--border:rgba(212,175,55,.10);
+--border-hover:rgba(212,175,55,.25);
+
+--gold:#D4AF37;
+--gold-soft:#E4C766;
+--gold-dark:#8D6A17;
+
+--white:#FFFFFF;
+
+--text-primary:rgba(255,255,255,.95);
+--text-secondary:rgba(255,255,255,.72);
+--text-muted:rgba(255,255,255,.50);
+
+/* ===========================
+   GRADIENTS
+=========================== */
+
+--gradient-gold:
+linear-gradient(
+135deg,
+#D4AF37,
+#F4D97A
+);
+
+--gradient-dark:
+linear-gradient(
+180deg,
+#030303,
+#090909
+);
+
+/* ===========================
+   RADIUS
+=========================== */
+
+--radius-sm:14px;
+--radius-md:22px;
+--radius-lg:32px;
+--radius-xl:42px;
+--radius-pill:999px;
+
+/* ===========================
+   SHADOWS
+=========================== */
+
+--shadow-soft:
+0 20px 60px rgba(0,0,0,.28);
+
+--shadow-gold:
+0 0 35px rgba(212,175,55,.12);
+
+--shadow-hover:
+0 25px 70px rgba(0,0,0,.38);
+
+/* ===========================
+   SPACING
+=========================== */
+
+--section-space:140px;
+--section-space-mobile:90px;
+
+--container:1280px;
+
+/* ===========================
+   TRANSITIONS
+=========================== */
+
+--transition-fast:.25s ease;
+--transition:.35s ease;
+--transition-slow:.6s ease;
+
+/* ===========================
+   GLASS
+=========================== */
+
+--glass-bg:
+rgba(255,255,255,.025);
+
+--glass-border:
+1px solid rgba(212,175,55,.10);
+
+--glass-blur:
+blur(18px);
+
+}

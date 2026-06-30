@@ -1,0 +1,61 @@
+/* ==========================================================
+   countries.js
+   50 common countries with flag, dial code, and the digit
+   length their mobile numbers typically use (for input
+   validation / counter display).
+========================================================== */
+
+const countries = [
+  { name: "India",                flag: "🇮🇳", code: "+91",  digits: 10 },
+  { name: "United States",        flag: "🇺🇸", code: "+1",   digits: 10 },
+  { name: "United Kingdom",       flag: "🇬🇧", code: "+44",  digits: 10 },
+  { name: "United Arab Emirates", flag: "🇦🇪", code: "+971", digits: 9  },
+  { name: "Australia",            flag: "🇦🇺", code: "+61",  digits: 9  },
+  { name: "Canada",               flag: "🇨🇦", code: "+1",   digits: 10 },
+  { name: "Singapore",            flag: "🇸🇬", code: "+65",  digits: 8  },
+  { name: "Germany",              flag: "🇩🇪", code: "+49",  digits: 11 },
+  { name: "France",               flag: "🇫🇷", code: "+33",  digits: 9  },
+  { name: "Saudi Arabia",         flag: "🇸🇦", code: "+966", digits: 9  },
+  { name: "Pakistan",             flag: "🇵🇰", code: "+92",  digits: 10 },
+  { name: "Bangladesh",           flag: "🇧🇩", code: "+880", digits: 10 },
+  { name: "Nepal",                flag: "🇳🇵", code: "+977", digits: 10 },
+  { name: "Sri Lanka",            flag: "🇱🇰", code: "+94",  digits: 9  },
+  { name: "China",                flag: "🇨🇳", code: "+86",  digits: 11 },
+  { name: "Japan",                flag: "🇯🇵", code: "+81",  digits: 10 },
+  { name: "South Korea",          flag: "🇰🇷", code: "+82",  digits: 10 },
+  { name: "Indonesia",            flag: "🇮🇩", code: "+62",  digits: 11 },
+  { name: "Malaysia",             flag: "🇲🇾", code: "+60",  digits: 9  },
+  { name: "Philippines",          flag: "🇵🇭", code: "+63",  digits: 10 },
+  { name: "Thailand",             flag: "🇹🇭", code: "+66",  digits: 9  },
+  { name: "Vietnam",              flag: "🇻🇳", code: "+84",  digits: 9  },
+  { name: "Italy",                flag: "🇮🇹", code: "+39",  digits: 10 },
+  { name: "Spain",                flag: "🇪🇸", code: "+34",  digits: 9  },
+  { name: "Netherlands",          flag: "🇳🇱", code: "+31",  digits: 9  },
+  { name: "Switzerland",          flag: "🇨🇭", code: "+41",  digits: 9  },
+  { name: "Sweden",               flag: "🇸🇪", code: "+46",  digits: 9  },
+  { name: "Norway",               flag: "🇳🇴", code: "+47",  digits: 8  },
+  { name: "Denmark",              flag: "🇩🇰", code: "+45",  digits: 8  },
+  { name: "Russia",               flag: "🇷🇺", code: "+7",   digits: 10 },
+  { name: "Brazil",               flag: "🇧🇷", code: "+55",  digits: 11 },
+  { name: "Mexico",               flag: "🇲🇽", code: "+52",  digits: 10 },
+  { name: "Argentina",            flag: "🇦🇷", code: "+54",  digits: 10 },
+  { name: "South Africa",         flag: "🇿🇦", code: "+27",  digits: 9  },
+  { name: "Nigeria",              flag: "🇳🇬", code: "+234", digits: 10 },
+  { name: "Kenya",                flag: "🇰🇪", code: "+254", digits: 9  },
+  { name: "Egypt",                flag: "🇪🇬", code: "+20",  digits: 10 },
+  { name: "Turkey",               flag: "🇹🇷", code: "+90",  digits: 10 },
+  { name: "Israel",               flag: "🇮🇱", code: "+972", digits: 9  },
+  { name: "Qatar",                flag: "🇶🇦", code: "+974", digits: 8  },
+  { name: "Kuwait",               flag: "🇰🇼", code: "+965", digits: 8  },
+  { name: "Bahrain",              flag: "🇧🇭", code: "+973", digits: 8  },
+  { name: "Oman",                 flag: "🇴🇲", code: "+968", digits: 8  },
+  { name: "New Zealand",          flag: "🇳🇿", code: "+64",  digits: 9  },
+  { name: "Ireland",              flag: "🇮🇪", code: "+353", digits: 9  },
+  { name: "Poland",               flag: "🇵🇱", code: "+48",  digits: 9  },
+  { name: "Portugal",             flag: "🇵🇹", code: "+351", digits: 9  },
+  { name: "Belgium",              flag: "🇧🇪", code: "+32",  digits: 9  },
+  { name: "Austria",              flag: "🇦🇹", code: "+43",  digits: 10 },
+  { name: "Greece",               flag: "🇬🇷", code: "+30",  digits: 10 },
+];
+
+export default countries;

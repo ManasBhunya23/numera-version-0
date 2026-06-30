@@ -1,445 +1,445 @@
-.how-it-works{
-  position:relative;
+/* ==========================================
+   HOW IT WORKS — pinned scroll section
+========================================== */
 
-  z-index:10;
-
-  height:100vh;
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  padding:0 8vw;
-
+.how-it-works {
+  position: relative;
+  z-index: 10;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 8vw;
+  overflow: hidden;
 }
 
-.section-kicker{
-  
-  margin-top:-40px;
-  font-size:12px;
-
-  letter-spacing:4px;
-
-  color:var(--gold-light);
-
-  text-transform:uppercase;
-
+/* Subtle ambient glow at top to bleed from hero */
+.how-it-works::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  background: radial-gradient(ellipse, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
-.card-stage{
+/* ==========================================
+   HEADER
+========================================== */
 
-  position:relative;
-
-  width:100%;
-
-  height:65vh;
-
-  margin-top:60px;
-
+.how-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 2;
 }
 
-.how-card{
+.how-header-left {}
 
-  position:absolute;
-
-  inset:0;
-
-  border-radius:36px;
-
-  background:
-    rgba(255,255,255,.03);
-
-  border:
-    1px solid rgba(212,175,55,.12);
-
-  -webkit-backdrop-filter:blur(20px);
-  backdrop-filter:blur(20px);
-
-  display:flex;
-
-  flex-direction:column;
-
-  justify-content:center;
-
-  padding:60px;
-
+.section-kicker {
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0.8;
 }
 
-.how-step{
-
-  color:var(--gold);
-
-  letter-spacing:4px;
-
-  font-size:12px;
-
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin: 0;
 }
 
-.how-card h3{
-
-  margin-top:16px;
-
-  font-size:3rem;
-
-  font-weight:300;
-
+/* Step progress indicator — right side */
+.how-progress-track {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.how-sample{
-
-  margin-top:28px;
-
-  width:max-content;
-
-  padding:18px 24px;
-
-  border-radius:16px;
-
-  background:
-    rgba(212,175,55,.06);
-
-  border:
-    1px solid rgba(212,175,55,.15);
-
-  color:var(--gold-light);
-
+.how-progress-pip {
+  width: 28px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.18);
+  overflow: hidden;
+  transition: background 0.4s ease, width 0.4s ease;
 }
 
-.how-card p{
-
-  margin-top:24px;
-
-  max-width:650px;
-
-  line-height:1.8;
-
-  color:
-    rgba(255,255,255,.7);
-
+.how-progress-pip.active {
+  background: var(--gold);
+  width: 48px;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
 }
 
-.how-score{
-  margin-top:18px;
-  
-  letter-spacing:1px;
-  
-  text-transform:uppercase;
-  font-size:1.15rem;
+/* ==========================================
+   CARD STAGE
+========================================== */
 
-  color:var(--gold-light);
-
+.card-stage {
+  position: relative;
+  width: 100%;
+  height: 62vh;
 }
 
-.how-insights{
+/* ==========================================
+   CARD — split layout
+========================================== */
 
-  margin-top:24px;
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:12px;
-
+.how-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  overflow: hidden;
+  /* Gold hairline top accent */
+  box-shadow:
+    inset 0 1px 0 rgba(212, 175, 55, 0.22),
+    0 40px 80px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.how-chip{
-
-  padding:14px;
-
-  background:
-    rgba(212,175,55,.05);
-
-  border:
-    1px solid rgba(212,175,55,.15);
-
-  border-radius:12px;
-
-  text-align:center;
-
-  color:var(--gold-light);
-
-  font-size:.85rem;
-
-  transition:.3s ease;
-
+.how-card:hover {
+  border-color: rgba(212, 175, 55, 0.2);
+  box-shadow:
+    inset 0 1px 0 rgba(212, 175, 55, 0.3),
+    0 40px 90px rgba(212, 175, 55, 0.08);
 }
 
-.how-chip:hover{
-
-  transform:translateY(-3px);
-
-  border-color:
-    rgba(212,175,55,.4);
-
+/* Left column — number + chips */
+.how-card-left {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 36px;
+  border-right: 1px solid rgba(212, 175, 55, 0.08);
+  overflow: hidden;
 }
 
-/* =======================================
+/* Giant watermark step number */
+.how-numeral {
+  position: absolute;
+  bottom: -32px;
+  left: -12px;
+  font-size: 18rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(212, 175, 55, 0.055);
+  letter-spacing: -8px;
+  /* user-select: none; */
+  pointer-events: none;
+  transition: color 0.5s ease;
+}
+
+.how-card:hover .how-numeral {
+  color: rgba(212, 175, 55, 0.085);
+}
+
+.how-step-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+/* Score arc */
+.how-score-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.how-score-label {
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.how-score-value {
+  font-size: 3rem;
+  font-weight: 200;
+  color: var(--gold-light, #FFD978);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.how-score-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(212, 175, 55, 0.12);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.how-score-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #D4AF37, #FFD978);
+  border-radius: 999px;
+  transform-origin: left;
+}
+
+/* Insight chips */
+.how-insights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.how-chip {
+  padding: 10px 14px;
+  background: rgba(212, 175, 55, 0.04);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.78rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.how-chip:hover {
+  border-color: rgba(212, 175, 55, 0.35);
+  color: var(--gold-light, #FFD978);
+  transform: translateX(3px);
+}
+
+/* Right column — text content */
+.how-card-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 52px 56px;
+  gap: 0;
+}
+
+.how-card-right h3 {
+  font-size: clamp(2rem, 2.8vw, 3.2rem);
+  font-weight: 300;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
+  margin: 0 0 20px 0;
+}
+
+.how-sample {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 10px;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.14);
+  color: var(--gold-light, #FFD978);
+  font-size: 0.88rem;
+  letter-spacing: 2px;
+  margin-bottom: 28px;
+  width: fit-content;
+  transition: border-color 0.35s ease, background 0.35s ease;
+}
+
+.how-card:hover .how-sample {
+  border-color: rgba(212, 175, 55, 0.28);
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.how-sample::before {
+  content: "›";
+  color: var(--gold);
+  font-size: 1.1rem;
+  transition: transform 0.35s ease;
+}
+
+.how-card:hover .how-sample::before {
+  transform: translateX(2px);
+}
+
+.how-card-right p {
+  max-width: 540px;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ==========================================
    TABLET
-======================================= */
+========================================== */
 
-@media (max-width:1024px){
-
-  .how-it-works{
-
-    padding:0 40px;
-
+@media (max-width: 1024px) {
+  .how-it-works {
+    padding: 0 40px;
   }
 
-  .card-stage{
-
-    height:60vh;
-
+  .how-card {
+    grid-template-columns: 220px 1fr;
   }
 
-  .how-card{
-
-    padding:48px;
-
-    border-radius:30px;
-
+  .how-card-left {
+    padding: 36px 28px;
   }
 
-  .how-card h3{
-
-    font-size:2.4rem;
-
+  .how-card-right {
+    padding: 40px 40px;
   }
 
-  .how-card p{
-
-    max-width:100%;
-
-    font-size:1rem;
-
+  .how-numeral {
+    font-size: 13rem;
   }
 
-  .how-score{
-
-    width:80px;
-    height:80px;
-
-    font-size:1.5rem;
-
+  .how-score-value {
+    font-size: 2.4rem;
   }
-
 }
 
-/* =======================================
-   MOBILE
-======================================= */
+/* ==========================================
+   MOBILE — collapse to single column
+========================================== */
 
-@media (max-width:768px){
-
-  .how-it-works{
-
-    padding:0 20px;
-
+@media (max-width: 768px) {
+  .how-it-works {
+    padding: 0 20px;
+    justify-content: flex-start;
+    padding-top: 80px;
   }
 
-  .section-kicker{
-
-    font-size:10px;
-
-    letter-spacing:3px;
-
+  .how-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 28px;
   }
 
-  .section-title{
-
-    font-size:2rem;
-
-    line-height:1.2;
-
+  .section-title {
+    font-size: 1.9rem;
   }
 
-  .card-stage{
-
-    height:65vh;
-
-    margin-top:32px;
-
+  .card-stage {
+    height: 72vh;
   }
 
-  .how-card{
-
-    padding:28px;
-
-    border-radius:24px;
-
+  .how-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    border-radius: 20px;
   }
 
-  .how-step{
-
-    font-size:10px;
-
-    letter-spacing:2px;
-
+  .how-card-left {
+    border-right: none;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+    padding: 28px 24px 24px;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .how-card h3{
-
-    font-size:1.8rem;
-
-    line-height:1.15;
-
-    margin-top:12px;
-
+  .how-numeral {
+    display: none;
   }
 
-  .how-top-row{
-
-    flex-direction:column;
-
-    align-items:flex-start;
-
-    gap:16px;
-
-    margin-top:20px;
-
+  .how-score-wrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
   }
 
-  .how-sample{
-
-    width:100%;
-
-    text-align:center;
-
-    margin-top:0;
-
-    padding:14px;
-
-    font-size:12px;
-
+  .how-score-bar {
+    width: 60px;
   }
 
-  .how-score{
-
-    width:65px;
-    height:65px;
-
-    font-size:1.2rem;
-
+  .how-insights {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
-  .how-card p{
-
-    margin-top:18px;
-
-    font-size:.9rem;
-
-    line-height:1.7;
-
+  .how-chip {
+    font-size: 0.68rem;
+    padding: 8px 10px;
   }
 
-  .how-insights{
-
-    margin-top:20px;
-
-    gap:8px;
-
+  .how-chip:hover {
+    transform: none;
   }
 
-  .how-chip{
-
-    font-size:.72rem;
-
-    padding:8px 12px;
-
+  .how-card-right {
+    padding: 28px 24px;
+    justify-content: flex-start;
   }
 
+  .how-card-right h3 {
+    font-size: 1.7rem;
+    margin-bottom: 14px;
+  }
+
+  .how-card-right p {
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
 }
 
-/* =======================================
+/* ==========================================
    SMALL PHONES
-======================================= */
+========================================== */
 
-@media (max-width:480px){
-
-  .how-it-works{
-
-    padding:0 16px;
-
+@media (max-width: 480px) {
+  .how-it-works {
+    padding: 60px 16px 0;
   }
 
-  .section-kicker{
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
+  .section-title {
+    font-size: 1.55rem;
   }
 
-  .section-title{
-
-    font-size:1.5rem;
-
-    line-height:1.2;
-
+  .card-stage {
+    height: 75vh;
   }
 
-  .card-stage{
-
-    height:68vh;
-
+  .how-card-right h3 {
+    font-size: 1.4rem;
   }
 
-  .how-card{
-
-    padding:22px;
-
-    border-radius:18px;
-
+  .how-card-right p {
+    font-size: 0.82rem;
   }
 
-  .how-card h3{
-
-    font-size:1.45rem;
-
+  .how-score-value {
+    font-size: 2rem;
   }
-
-  .how-sample{
-
-    font-size:11px;
-
-    padding:12px;
-
-  }
-
-  .how-score{
-
-    width:56px;
-    height:56px;
-
-    font-size:1rem;
-
-  }
-
-  .how-card p{
-
-    font-size:.82rem;
-
-    line-height:1.55;
-
-  }
-
-  .how-insights{
-
-    gap:6px;
-
-  }
-
-  .how-chip{
-
-    font-size:.65rem;
-
-    padding:7px 10px;
-
-  }
-
 }
 
+/* ==========================================
+   REDUCED MOTION
+========================================== */
 
-
+@media (prefers-reduced-motion: reduce) {
+  .how-card,
+  .how-chip,
+  .how-sample,
+  .how-sample::before,
+  .how-numeral,
+  .how-progress-pip {
+    transition: none !important;
+  }
+}

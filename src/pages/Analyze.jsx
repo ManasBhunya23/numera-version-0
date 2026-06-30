@@ -8,93 +8,111 @@ import "../styles/Analyze.css";
 
 export default function Analyze({ setPage }) {
 
-const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1);
 
-const [country, setCountry] = useState(null);
+  const [country, setCountry] = useState(null);
+  const [number, setNumber] = useState("");
 
-const [number, setNumber] = useState("");
+  // Holds the full deterministic engine output once the
+  // loader finishes computing it — Report reads from this.
+  const [report, setReport] = useState(null);
 
-const handleBack = () => {
+  const handleBack = () => {
 
+    setStep(1);
 
-setStep(1);
+    setCountry(null);
+    setNumber("");
+    setReport(null);
 
-setCountry(null);
+    setPage("landing");
 
-setNumber("");
+  };
 
-setPage("landing");
+  return (
 
+    <section className="analyze-page">
 
-};
+      <button
+        className="analyze-back"
+        onClick={handleBack}
+      >
+        ← Back
+      </button>
 
-return (
+      {
 
+        step === 1 &&
 
-<section className="analyze-page">
+        <CountryStep
 
-  <button
-    className="analyze-back"
-    onClick={handleBack}
-  >
-    ← Back
-  </button>
+          onSelect={(selectedCountry) => {
 
-  {
+            setCountry(selectedCountry);
 
-    step === 1 &&
+            setStep(2);
 
-    <CountryStep
+          }}
 
-      onSelect={(selectedCountry) => {
+        />
 
-        setCountry(selectedCountry);
+      }
 
-        setStep(2);
+      {
 
-      }}
+        step === 2 &&
 
-    />
+        <NumberStep
 
-  }
+          country={country}
 
-  {
+          number={number}
 
-    step === 2 &&
+          setNumber={setNumber}
 
-    <NumberStep
+          onSubmit={() => setStep(3)}
 
-      country={country}
+        />
 
-      number={number}
+      }
 
-      setNumber={setNumber}
+      {
 
-      onSubmit={() => setStep(3)}
+        step === 3 &&
 
-    />
+        <AnalysisLoader
 
-  }
+          fullNumber={number}
 
-  {
+          onComplete={(generatedReport) => {
 
-    step === 3 &&
+            // AnalysisLoader hands back the full engine report
+            // the instant it finishes its staged animation —
+            // store it, then move to the Report screen.
+            setReport(generatedReport);
 
-    <AnalysisLoader
-    onComplete={() => setStep(4)}
-    />
+            setStep(4);
 
-  }
+          }}
 
-  {
-  step === 4 &&
+        />
 
-  <Report />
-  }
+      }
 
-</section>
+      {
 
+        step === 4 &&
 
-);
+        <Report
+          report={report}
+          country={country}
+          number={number}
+        />
+
+      }
+
+    </section>
+
+  );
 
 }
